@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {Button, Container, Nav, Navbar} from 'react-bootstrap'
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Layout = () => {
@@ -16,22 +16,29 @@ const Layout = () => {
     } else {
       return(
         <>
-          <Nav.Link href = "/login">Login</Nav.Link>
-          <Nav.Link href = "/register">New User</Nav.Link>
+          <Nav.Link eventKey = "/login">Login</Nav.Link>
+          <Nav.Link eventKey = "/register">New User</Nav.Link>
         </>
       )
     };
+  };
+
+  const handleSelect = (eventKey) => {
+    navigate(eventKey)
   };
 
   return(
     <>
       <Navbar expand = "md" bg = "dark" variant = "dark">
         <Container>
-          <Navbar.Brand href = "/">HomePage</Navbar.Brand>
+          <Navbar.Brand onClick = {()=>navigate("/")}>Cool Logo</Navbar.Brand>
           <Navbar.Toggle aria-controls="response-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href = "/">Home</Nav.Link>
+            <Nav className="me-auto" onSelect = {handleSelect}>
+              <Nav.Link eventKey = "/">Home</Nav.Link>
+              <Nav.Link eventKey = "/protected">Protected</Nav.Link>
+            </Nav>
+            <Nav className="justify-content-end" onSelect = {handleSelect}>
               {renderUILinks()}
             </Nav>
           </Navbar.Collapse>

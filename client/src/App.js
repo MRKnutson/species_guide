@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Layout from './components/Layout';
+import Protected from './pages/Protected';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path = "/" element = {<Home />} />
           <Route path = "/register" element = {<Register />} />
           <Route path = "/login" element = {<Login />} />
+          <Route path = "/protected" element = {<Protected />} />
         </Route>
       </Routes>
     </div>
