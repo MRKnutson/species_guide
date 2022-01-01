@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_213310) do
+ActiveRecord::Schema.define(version: 2022_01_01_220948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.bigint "phylum_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["phylum_id"], name: "index_groups_on_phylum_id"
+  end
+
+  create_table "phylums", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "location"
+    t.bigint "species_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["species_id"], name: "index_pictures_on_species_id"
+  end
+
+  create_table "species", force: :cascade do |t|
+    t.string "common_name"
+    t.string "scientific_name"
+    t.integer "rcode"
+    t.string "image"
+    t.text "description"
+    t.text "characteristics"
+    t.text "similar_species"
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_species_on_group_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -45,4 +81,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_213310) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "groups", "phylums"
+  add_foreign_key "pictures", "species"
+  add_foreign_key "species", "groups"
 end

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import {Button, Container, Nav, Navbar} from 'react-bootstrap'
+import {Button, Container, Nav, Navbar, TabContainer} from 'react-bootstrap'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import tanner from "../tanner.png"
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -31,7 +32,9 @@ const Layout = () => {
     <>
       <Navbar expand = "md" bg = "dark" variant = "dark">
         <Container>
-          <Navbar.Brand onClick = {()=>navigate("/")}>Cool Logo</Navbar.Brand>
+          <Navbar.Brand onClick = {()=>navigate("/")}>
+            <img src = {tanner} height = "45" className = "d-inline-block align-top" alt = "Tanner logo" />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="response-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" onSelect = {handleSelect}>

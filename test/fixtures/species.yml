@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  common_name: MyString
+  scientific_name: MyString
+  rcode: 1
+  image: MyString
+  description: MyText
+  characteristics: MyText
+  similar_species: MyText
+  group: one
+
+two:
+  common_name: MyString
+  scientific_name: MyString
+  rcode: 1
+  image: MyString
+  description: MyText
+  characteristics: MyText
+  similar_species: MyText
+  group: two
