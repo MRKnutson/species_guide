@@ -16,3 +16,14 @@ u1 = User.create(email:"test@test.com", password: 123456)
     password: Faker::Internet.password(min_length: 6),
   )
 end
+
+fish = Phylum.create(name: "fish")
+invertebrates = Phylum.create(name: "invertebrates")
+
+sharks = fish.groups.create(name:"sharks")
+skates = fish.groups.create(name:"skates")
+flatfish = fish.groups.create(name:"flatfish")
+
+sharks.species.create(common_name: "salmon shark", scientific_name: "Lamna ditropis", rcode: 232)
+sharks.species.create(common_name: "spiny dogfish", scientific_name: "Squalus acanthius", rcode: 310)
+sharks.species.create(common_name: "sleeper shark", scientific_name: "Samniosus pacificus", rcode: 321)
