@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {Button, Container, Nav, Navbar, TabContainer} from 'react-bootstrap'
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import tanner from "../tanner.png"
 
@@ -25,7 +25,7 @@ const Layout = () => {
   };
 
   const handleSelect = (eventKey) => {
-    navigate(eventKey)
+    navigate(eventKey);
   };
 
   return(
@@ -39,6 +39,8 @@ const Layout = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" onSelect = {handleSelect}>
               <Nav.Link eventKey = "/">Home</Nav.Link>
+              <Nav.Link eventKey = "/phylums/1">Fish</Nav.Link>
+              <Nav.Link eventKey = "/phylums/2">Invertebrates</Nav.Link>
               <Nav.Link eventKey = "/protected">Protected</Nav.Link>
             </Nav>
             <Nav className="justify-content-end" onSelect = {handleSelect}>

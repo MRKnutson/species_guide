@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Phylum.destroy_all
+
 require "faker"
 
 u1 = User.create(email:"test@test.com", password: 123456)
@@ -24,6 +27,6 @@ sharks = fish.groups.create(name:"sharks")
 skates = fish.groups.create(name:"skates")
 flatfish = fish.groups.create(name:"flatfish")
 
-sharks.species.create(common_name: "salmon shark", scientific_name: "Lamna ditropis", rcode: 232)
-sharks.species.create(common_name: "spiny dogfish", scientific_name: "Squalus acanthius", rcode: 310)
-sharks.species.create(common_name: "sleeper shark", scientific_name: "Samniosus pacificus", rcode: 321)
+sharks.species.create(common_name: "salmon shark", scientific_name: "Lamna ditropis", rcode: 232, image: "/Images/Salmon_Shark.JPG", description: "The great white sharks smaller cousin. Approximately 6 feet in length and lighter grey in color.")
+sharks.species.create(common_name: "spiny dogfish", scientific_name: "Squalus acanthius", rcode: 310, image: "/Images/spiny_dogfish.jpg", description: "Smallest of the sharks with distinctive spikes behind dorsal fins.")
+sharks.species.create(common_name: "sleeper shark", scientific_name: "Samniosus pacificus", rcode: 321, image: "/Images/Sleeper_Shark.jpg", description: "Largest of the sharks. Dark coloration and slow moving. Appears to lose its shape on deck.")

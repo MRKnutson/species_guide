@@ -6,12 +6,16 @@ import Login from './pages/Login';
 import Layout from './components/Layout';
 import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
+import Phylum from './pages/Phylum';
+import SpeciesList from './pages/SpeciesList';
 
 function App() {
   return (
     <Routes>
       <Route element ={<Layout />}>
         <Route path = "/" element = {<Home />} />
+        <Route path = "/phylums/:phylum_id" element = {<Phylum />} />
+        <Route path = "/groups/:group_id" element = {<SpeciesList />} />
         <Route path = "/register" element = {<Register />} />
         <Route path = "/login" element = {<Login />} />
         <Route element = {<RequireAuth />}>
