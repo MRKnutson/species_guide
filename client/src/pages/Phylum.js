@@ -29,7 +29,7 @@ const Phylum = ()=>{
   };
 
   const handleNavigate = (group_id, group) =>{
-    navigate(`/groups/${group_id}`)
+    navigate(`/groups/${group_id}`, { state: {group}})
   };
 
   const renderGroups = () => {

@@ -1,25 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Card, CardGroup, Container } from 'react-bootstrap';
-import { useLocation, useParams } from 'react-router-dom';
-import RenderJson from '../components/RenderJson';
+import { useLocation } from 'react-router-dom';
 import { RaisedCard } from '../components/Styles';
 
 const SpeciesList = () => {
   const [species, setSpecies] = useState()
-  const location = useLocation()
-  // const {group_name} = location.state
-  const {group_id} = useParams();
+  const {state} = useLocation()
+  const {group} = state
 
   useEffect(()=>{
     getSpecies()
   },[])
 
-  // console.log(location)
+  console.log(group)
 
   const getSpecies = async () => {
     try {
-      let response = await axios.get(`/api/groups/${group_id}/species`)
+      let response = await axios.get(`/api/groups/${group.id}/species`)
       setSpecies(response.data)
     } catch (err) {
       alert('error getting species list')
@@ -45,11 +43,10 @@ const SpeciesList = () => {
 
   return(
     <Container>
-      <h1>Group</h1>
+      <h1>{group.name.charAt(0).toUpperCase() + group.name.slice(1)}</h1>
       <CardGroup>
         {species && renderSpecies()}
       </CardGroup>
-      <RenderJson json = {species} />
     </Container>
   )
 };

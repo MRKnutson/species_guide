@@ -23,14 +23,14 @@ const Home =  () => {
     }
   };
 
-  const handleNavigate = (phylum_id) =>{
-    navigate(`/phylums/${phylum_id}`)
+  const handleNavigate = (phylum_id, phylum) =>{
+    navigate(`/phylums/${phylum_id}`, {state: {phylum}})
   };
 
   const renderPhylum = () => {
     return phylum.map((p)=>{
       return(
-        <NavigationCard bg= "dark" text ="white" className = "text-center" key = {p.id} onClick ={()=> handleNavigate(p.id)}>
+        <NavigationCard bg= "dark" text ="white" className = "text-center" key = {p.id} onClick ={()=> handleNavigate(p.id, p)}>
           <Card.Title as = 'h2'>{p.name.charAt(0).toUpperCase() + p.name.slice(1)}</Card.Title>
         </NavigationCard>
       )
@@ -42,12 +42,6 @@ const Home =  () => {
     <Container>
       <h1>Home</h1>
       {phylum && renderPhylum()}
-      <NavigationCard bg = "dark" text = "white" className = "text-center">
-        <Card.Title as = 'h2'>Fish</Card.Title>
-      </NavigationCard>
-      <NavigationCard bg = "dark" text = "white" className = "text-center">
-        <Card.Title as = 'h2'>Invertebrates</Card.Title>
-      </NavigationCard>
       <RenderJson json={phylum} />
     </Container>
   )
